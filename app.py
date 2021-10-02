@@ -6,8 +6,6 @@ global x_train, x_test, y_train, y_test, acc1 , acc2 ,acc3,acc4,acc5,acc6
 import joblib
 
 app = Flask(__name__)
-app.run(debug=True)
-
 
 @app.route('/')
 def index():  # put application's code here
@@ -85,6 +83,6 @@ def prediction1():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
 
