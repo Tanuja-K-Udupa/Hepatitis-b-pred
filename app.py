@@ -52,41 +52,71 @@ def splitdataset():
 def prediction():
     return render_template('prediction.html')
 
-@app.route('/prediction1',methods = ['POST','GET'])
+@app.route('/predict',methods = ['POST','GET'])
 def prediction1():
     a = []
     try:
         if request.method == "POST":
-            sex = int(request.form['sex'])
+            values = []
+            name = request.form['name']
+            values.append(name)
+            sex = 1 if request.form['sex']=="Male" else 0
+            values.append(request.form['sex'])
             age = int(request.form['age'])
-            steroid = int(request.form['steroid'])
-            fatigue = int(request.form['fatigue'])
-            antivirals = int(request.form['antivirals'])
-            alk_phosphate = int(request.form['alk_phosphate'])
-            malaise = int(request.form['malaise'])
-            liver_big = int(request.form['liver_big'])
-            liver_firm = int(request.form['liver_firm'])
-            anorexia = int(request.form['anorexia'])
-            spiders = int(request.form['spiders'])
-            ascites = int(request.form['ascites'])
+            values.insert(1,age)
+            steroid = 1 if request.form['steroid']=="High" else 0
+            values.append(request.form['steroid'])
+            fatigue = 1 if request.form['fatigue']=="High" else 0
+            values.append(request.form['fatigue'])
+            antivirals = 1 if request.form['antivirals']=="High" else 0
+            values.append(request.form['antivirals'])
+            alk_phosphate = float(request.form['alk_phosphate'])
+            values.append(alk_phosphate)
+            malaise = 1 if request.form['malaise']=="Yes" else 0
+            values.append(request.form['malaise'])
+            liver_big = 1 if request.form['liver_big']=="Yes" else 0
+            values.append(request.form['liver_big'])
+            liver_firm = 1 if liver_big==0 else 0
+            anorexia = 1 if request.form['anorexia']=="Yes" else 0
+            values.append(request.form['anorexia'])
+            spiders = 1 if request.form['spiders']=="Yes" else 0
+            values.append(request.form['spiders'])
+            ascites = 1 if request.form['ascites']=="High" else 0
+            values.append(request.form['ascites'])
             bilirubin = float(request.form['bilirubin'])
-            histology = int(request.form['histology'])
+            values.append(bilirubin)
+            histology = 1 if request.form['histology']=="Yes" else 0
+            values.append(request.form['histology'])
             sgot = float(request.form['sgot'])
-            albumin = int(request.form['albumin'])
+            values.append(sgot)
+            albumin = float(request.form['albumin'])
+            values.append(albumin)
             a.extend([age,sex,steroid,antivirals,fatigue,malaise,anorexia,liver_big,liver_firm,0,spiders,ascites,0,bilirubin,alk_phosphate,sgot,albumin,62,histology])
             model = joblib.load("SVCMODEL.pkl")
             y_pred = model.predict([a])
-            return render_template('prediction.html',msg = "done",op=y_pred)
-    except ValueError:
+            values.append(y_pred[0])
+            createFile(values)
+            return render_template('prediction.html',msg = "done",op=y_pred,name=name,age=age,sex="Male" if sex==1 else "Female")
+    except Exception:
+        print("Error")
         return render_template('prediction.html')
 
-    #return render_template("prediction.html")
+def createFile(value):
+    value.insert(0,"limegreen" if value[-1]==0 else "red")
+    value.insert(4,"Healthy.png" if value[-1]==0 else "Infected.png")
 
+    file = open('reportFormat.txt','r')
+    data = "".join(file.readlines())
+    data = data.split("{}")
+    finalData = data[0]
+    for i in range(1,len(data)):
+        finalData += str(value[i-1])
+        finalData += data[i]
 
-
-
+    file = open("./templates/Report.html",'w')
+    file.write(finalData)
+    file.close()
+    print(value)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
