@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Hepatitis-B</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -150,7 +149,72 @@
   textarea {
     resize: none;
   }
+
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
   </style>
+
+    <script>
+function myFunction(id,text) {
+  var popup = document.getElementById(id);
+  document.getElementById(id).textContent=text;
+  popup.classList.toggle("show");
+}
+</script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -176,107 +240,195 @@
 </nav>
 
 
-
       <center><div class="container">
-    <h2>Predict the Results: </h2><br /><br />
-<p>Note:1.Enter '0' for absence and '1' for presence<br>2.Enter '0' for female and '1' for male</p>
+    <h2>Hepatitis-B Check Form</h2><br /><br />
+<!--<p>Note:1.Enter '0' for absence and '1' for presence<br>2.Enter '0' for female and '1' for male</p>-->
+<form class="form-horizontal" action="/predict" method="POST">
 
-<form class="form-horizontal" action="/prediction1" method="POST">
+
+ <fieldset>
+  <legend>Patient Information</legend>
     <div class="form-group">
-      <label for="sex">Sex:</label>
-      <input type="text" class="form-control" id="sex" placeholder="Enter the gender" name="sex">
+      <label for="name" style="margin-left:-150px;margin-right:20px">Name:</label>
+      <input type="text" style="margin-top:-35px;margin-left:50px;width:110px;" class="form-control" id="name" placeholder="Enter Patient Name" name="name">
     </div>
     <div class="form-group">
-      <label for="age">Age:</label>
-      <input type="text" class="form-control" id="age" placeholder="Enter the Age" name="age">
-    </div>
-       <div class="form-group">
-      <label for="steroid">Steroid:</label>
-      <input type="text" class="form-control" id="steroid" placeholder="presence of Steroid" name="steroid">
-    </div>
-      <div class="form-group">
-      <label for="fatigue">Fatigue:</label>
-      <input type="text" class="form-control" id="fatigue" placeholder=" Fatigue level" name="fatigue">
-    </div>
-      <div class="form-group">
-      <label for="antivirals">Antivirals:</label>
-      <input type="text" class="form-control" id="antivirals" placeholder="presence of Antivirals" name="antivirals">
-    </div>
-      <div class="form-group">
-      <label for="alk_phosphate">Alk_phosphate:</label>
-      <input type="text" class="form-control" id="alk_phosphate" placeholder="presence of Alk_phosphate" name="alk_phosphate">
-    </div>
-      <div class="form-group">
-      <label for="malaise">Malaise:</label>
-      <input type="text" class="form-control" id="malaise" placeholder="Enter Malaise" name="malaise">
-    </div>
-      <div class="form-group">
-      <label for="liver_big">Liver_big:</label>
-      <input type="text" class="form-control" id="liver_big" placeholder="liver_big" name="liver_big">
-    </div>
-       <div class="form-group">
-      <label for="liver_firm">Liver_firm:</label>
-      <input type="text" class="form-control" id="liver_firm" placeholder="liver_firm" name="liver_firm">
-    </div>
-       <div class="form-group">
-      <label for="anorexia">Anorexia:</label>
-      <input type="text" class="form-control" id="anorexia" placeholder="anorexia" name="anorexia">
-    </div>
-       <div class="form-group">
-      <label for="spiders">Spiders:</label>
-      <input type="text" class="form-control" id="spiders" placeholder="spiders" name="spiders">
-    </div>
-       <div class="form-group">
-      <label for="ascites">Ascities:</label>
-      <input type="text" class="form-control" id="ascites" placeholder="ascites" name="ascites">
+        <div class="form-check">
+            <label style="margin-left:-135px;margin-right:50px">Sex:</label>
+            <div style="margin-top:-30px">
+                <div>
+                    <input class="form-check-input"  type="radio" name="sex" id="Male" value="Male">
+                    <label class="form-check-label" >Male</label>
+                </div>
+                <div style="margin-left:3px">
+                    <input style="margin-left:10px" class="form-check-input" type="radio" name="sex" id="Female" value="Female">
+                    <label class="form-check-label" >Female</label>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="form-group">
+      <label for="age" style="margin-left:-165px;margin-right:20px">Age:</label>
+      <input type="text" style="margin-top:-35px;margin-left:50px;width:110px;" class="form-control" id="age" placeholder="Enter the Age" name="age">
+    </div>
+ </fieldset>
+    <br/>
+    <hr style="margin-bottom:0"><h4 style="margin-bottom:10px;">Enter Report Data of Patient</h4><hr style="margin-top:0">
+    <div class="form-group">
+         <div class="form-check">
+             <div class="popup" onclick="myFunction('Steroid','Normal Range : 5 to 25 mcg/dL or 140 to 690 nmol/L')">
+             <label style="margin-left:20px;margin-right:20px">Steroid:</label>
+                 <span class="popuptext" id="Steroid"></span>
+             </div>
+            <input class="form-check-input"  style="margin-left:20px" type="radio" name="steroid" value="High">
+            <label class="form-check-label" >High</label>
+            <input class="form-check-input" style="margin-left:20px" type="radio" name="steroid" value="Low">
+            <label class="form-check-label" >Low</label>
+            <input class="form-check-input" style="margin-left:20px" type="radio" name="steroid" value="Normal">
+            <label class="form-check-label" >Normal</label>
+        </div>
+    </div>
+      <div class="form-group">
+          <div class="popup" onclick="myFunction('Fatigue','Feeling of Tiredness or Lack of Energy')">
+      <label style="margin-left:-110px;margin-right:40px">Fatigue:</label><span class="popuptext" id="Fatigue"></span>
+              </div>
+      <input class="form-check-input" style="margin-left:15px" type="radio" name="fatigue" id="Yes" value="Yes">
+      <label class="form-check-label">Yes</label>
+      <input class="form-check-input" style="margin-left:30px" type="radio" name="fatigue" id="No" value="No">
+      <label class="form-check-label" >No</label>
+    </div>
+
+      <div class="form-group">
+          <div class="popup" onclick="myFunction('Antivirals','Normal Intake of Antivirals : 10 mg/day')">
+      <label style="margin-left:18px;margin-right:25px">Antivirals:</label>
+              <span class="popuptext" id="Antivirals"></span>
+              </div>
+      <input class="form-check-input" type="radio" name="antivirals"  value="High">
+      <label class="form-check-label" >High</label>
+      <input class="form-check-input" style="margin-left:20px" type="radio" name="antivirals"  value="Low">
+      <label class="form-check-label" >Low</label>
+            <input class="form-check-input" style="margin-left:20px" type="radio" name="antivirals" value="Normal">
+            <label class="form-check-label" >Normal</label>
+    </div>
+
+      <div class="form-group">
+          <div class="popup" onclick="myFunction('Alkphosphate','Normal Range of Alkaline Phosphatase : less than 112 IU/L')">
+          <label for="alk_phosphate" style="margin-left:-280px;">Alk_phosphate:</label>
+          <span class="popuptext" id="Alkphosphate"></span>
+              </div>
+    </div>
+    <input type="text" style="margin-left:50px;width:120px;margin-top:-50px;margin-bottom:20px" class="form-control" id="alk_phosphate" placeholder="Enter the data" name="alk_phosphate">
+
+      <div class="form-group">
+          <div class="popup" onclick="myFunction('Malaise','Feeling of Illness or Unhappy Without Reason')">
+      <label style="margin-left:-170px;">Malaise:</label>
+              <span class="popuptext" id="Malaise"></span>
+              </div>
+            <input class="form-check-input" style="margin-left:10px" type="radio" name="malaise"  value="Yes">
+            <label class="form-check-label">Yes</label>
+            <input class="form-check-input" style="margin-left:20px" type="radio" name="malaise" value="No">
+            <label class="form-check-label" >No</label>
+    </div>
+      <div class="form-group">
+          <div class="popup" onclick="myFunction('Liverbig','Normal Liver Size : 7 cm for Women and 10.5 cm for Men')">
+      <label style="margin-left:-150px;">Liver_big:</label>
+              <span class="popuptext" id="Liverbig"></span>
+              </div>
+            <input class="form-check-input" style="margin-left:20px" type="radio" name="liver_big"  value="Yes">
+            <label class="form-check-label" >Yes</label>
+            <input class="form-check-input" type="radio" style="margin-left:30px" name="liver_big"  value="No">
+            <label class="form-check-label" >No</label>
+    </div>
        <div class="form-group">
-      <label for="bilirubin">Bilirubin:</label>
-      <input type="text" class="form-control" id="bilirubin" placeholder="bilirubin" name="bilirubin">
+          <div class="popup" onclick="myFunction('Anorexia','Eating Disorder Causing Extreme Weight Loss')">
+      <label style="margin-left:-150px;">Anorexia:</label>
+              <span class="popuptext" id="Anorexia"></span>
+              </div>
+            <input class="form-check-input"  style="margin-left:20px" type="radio" name="anorexia" value="Yes">
+            <label class="form-check-label" >Yes</label>
+            <input class="form-check-input" type="radio" style="margin-left:30px" name="anorexia"  value="No">
+            <label class="form-check-label" >No</label>
+       </div>
+       <div class="form-group">
+          <div class="popup" onclick="myFunction('Spiders','Inflammation of The Liver and Skin Red Patches')">
+      <label  style="margin-left:-140px;">Spiders:</label>
+              <span class="popuptext" id="Spiders"></span>
+              </div>
+            <input class="form-check-input" style="margin-left:25px" type="radio" name="spiders"  value="Yes">
+            <label class="form-check-label" >Yes</label>
+            <input class="form-check-input" type="radio" name="spiders" style="margin-left:32px"  value="No">
+            <label class="form-check-label" >No</label>
+    </div>
+       <div class="form-group">
+          <div class="popup" onclick="myFunction('Ascities','Buildup of Fluid in Abdomen. Normal Range : less than 15 g/L')">
+      <label  style="margin-left:-125px;">Ascities:</label>
+              <span class="popuptext" id="Ascities"></span>
+              </div>
+            <input class="form-check-input" style="margin-left:30px" type="radio" name="ascites"  value="High">
+            <label class="form-check-label" >High</label>
+            <input class="form-check-input" type="radio" name="ascites" style="margin-left:27px" value="Low">
+            <label class="form-check-label" >Low</label>
+    </div>
+
+       <div class="form-group">
+          <div class="popup" onclick="myFunction('Bilirubn','Normal Range : less than 1.2 mg/dL or 20.5 umol/L')">
+      <label for="bilirubin" style="margin-left:-280px;">Bilirubin:</label>
+              <span class="popuptext" id="Bilirubn"></span>
+              </div>
+      <input type="text" style="margin-top:-35px;margin-left:50px;width:120px;" class="form-control" id="bilirubin" placeholder="Enter the data" name="bilirubin">
     </div>
       <div class="form-group">
-      <label for="histology">Histology:</label>
-      <input type="text" class="form-control" id="histology" placeholder="histology" name="histology">
+          <div class="popup" onclick="myFunction('Histology','Disorder of Liver')">
+      <label  style="margin-left:-145px;">Histology:</label>
+              <span class="popuptext" id="Histology"></span>
+              </div>
+            <input class="form-check-input" style="margin-left:25px" type="radio" name="histology" id="High" value="Yes">
+            <label class="form-check-label" >Yes</label>
+            <input class="form-check-input" type="radio" name="histology" id="Low" value="No" style="margin-left:30px">
+            <label class="form-check-label" >No</label>
     </div>
       <div class="form-group">
-      <label for="sgot">Sgot:</label>
-      <input type="text" class="form-control" id="sgot" placeholder="sgot" name="sgot">
+          <div class="popup" onclick="myFunction('SG','Measure of Liver Enzymes')">
+      <label for="sgot" style="margin-left:-275px;">Sgot:</label>
+              <span class="popuptext" id="SG"></span>
+              </div>
+      <input type="text" style="margin-top:-35px;margin-left:50px;width:120px;" class="form-control" id="sgot" placeholder="Enter the data" name="sgot">
     </div>
       <div class="form-group">
-      <label for="albumin">Albumin:</label>
-      <input type="text" class="form-control" id="albumin" placeholder="albumin" name="albumin">
+          <div class="popup" onclick="myFunction('alb','Normal Range : 3.5 to 5.5 g/dL')">
+      <label for="albumin" style="margin-left:-275px;">Albumin:</label>
+              <span class="popuptext" id="alb"></span>
+              </div>
+      <input type="text" style="margin-top:-35px;margin-left:50px;width:120px;" class="form-control" id="albumin" placeholder="Enter the data" name="albumin">
     </div>
+
 
     <button type="submit" class="btn btn-default">Submit</button>
-  </form>
 
-
-
-
+</form>
 
 </div>
 
-
-
- {% if msg=="done" %}
-    <div class="alert alert-success">
-  <strong>Success!</strong> Model predicted!!
-</div>
- {% endif %}
-        {% if op == 0 %}
-            <div class=""alert alert-info">
-            <p>The output is: {{ op }}<br>person is infected!!!<br>Kindly consult the Doctor!</p>
-            </div>
-        {% endif %}
-
-      {% if op== 1 %}
-<div class="alert alert-info">
-  <p>The output is :{{ op }}<br>Person is Disinfected!</p>
-
-
-</div>
+{% if op== 1 %}
+       <script>
+           alert("Name : {{name}}\nAge : {{age}}\nSex : {{sex}}\n\nPatient is Infected.\nKindly Consult The Doctor");
+       </script>
 {% endif %}
+{% if op== 0 %}
+        <script>
+            alert("Name : {{name}}\nAge : {{age}}\nSex : {{sex}}\n\nPatient is not Infected.");
+        </script>
+{% endif %}
+          {% if op==0 or op==1 %}
+          <a download href='./Report.html' id="downloadlink" ></a>
+          <script>
+          if (window.confirm('Download Report?'))
+            {
+                document.getElementById("downloadlink").click();
+            }
+        </script>
+          {% endif %}
       </center>
 </body>
 </html>
