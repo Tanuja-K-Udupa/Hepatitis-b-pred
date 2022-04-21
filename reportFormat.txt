@@ -1,0 +1,94 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Report</title>
+        <style>
+            legend {
+               background-color: gray;
+               color: white;
+               padding: 5px 10px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <center>
+            <h2 style="margin-bottom:-7px">Hepatitis-B Report</h2>
+            <hr width=200px>
+            <fieldset style="width:400px;border-color:{}">
+                <legend style="background-color:white;color:black">
+                <h3><b> Report </b></h3>
+                </legend>
+    
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px">
+                    <label>Name : {}</label>
+                </div>
+   
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px">
+                    <label>Age&nbsp&nbsp&nbsp : {} years</label>
+                </div>
+   
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px">
+                    <label>Sex&nbsp&nbsp&nbsp&nbsp : {}</label>
+                </div>
+   
+                <img src="{}" style="margin-top:-80px;margin-left:200px;" width="100px" height="100px">
+                <hr><div style="margin-bottom:-7px"></div><hr>
+                <br>
+    
+                 <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Steroid&nbsp&nbsp&nbsp&nbsp : 
+                    <label style="color:black">{}</label></label>
+                </div>
+    
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Fatigue&nbsp&nbsp&nbsp&nbsp : 
+                    <label style="color:black">{}</label></label>
+                </div>
+   
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Antivirals Intake : 
+                    <label style="color:black">{}</label></label>
+                </div>
+   
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Alkaline Phosphate : 
+                    <label style="color:black">{} IU/L</label></label>
+                </div>
+                
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Malaise : 
+                    <label style="color:black">{}</label></label>
+                </div>
+                
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Liver Big : 
+                    <label style="color:black">{}</label></label>
+               </div>
+               
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Anorexia : 
+                    <label style="color:black">{}</label></label>
+                </div>
+                
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Spiders : 
+                    <label style="color:black">{}</label></label>
+                </div>
+        
+                <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Ascities : 
+                    <label style="color:black">{}</label></label>
+                </div>
+                
+               <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Bilirubin : 
+                    <label style="color:black">{} mg/dL</label></label>
+               </div>
+
+               <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Histology : 
+                    <label style="color:black">{}</label></label>
+               </div>
+               
+               <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Sgot : 
+                    <label style="color:black">{} U/L</label></label>
+               </div>
+               
+               <div style="text-align:left;font-weight:bold;font-size:16px;color:#007a99;margin-left:30px;margin-top:5px"><label>Albumin : 
+                    <label style="color:black">{} g/dL</label></label>
+               </div>
+            </fieldset>
+        </center>
+    </body>
+    </html>
