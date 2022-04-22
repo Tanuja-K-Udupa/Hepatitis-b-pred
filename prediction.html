@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Hepatitis-B</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font: 400 15px/1.8 Lato, sans-serif;
+    color: #777;
+  }
+  h3, h4 {
+    margin: 10px 0 30px 0;
+    letter-spacing: 10px;
+    font-size: 20px;
+    color: #111;
+  }
+  .container {
+    padding: 80px 120px;
+  }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+  .carousel-inner img {
+   /* make all photos black and white */
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+  }
+  .carousel-caption h3 {
+    color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+  .bg-1 {
+    background: #2d2d30;
+    color: #bdbdbd;
+  }
+  .bg-1 h3 {color: #fff;}
+  .bg-1 p {font-style: italic;}
+  .list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail p {
+    margin-top: 15px;
+    color: #555;
+  }
+  .btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+  }
+  .modal-header, h4, .close {
+    background-color: #333;
+    color: #fff !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-header, .modal-body {
+    padding: 40px 50px;
+  }
+  .nav-tabs li a {
+    color: #777;
+  }
+  #googleMap {
+    width: 100%;
+    height: 400px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+  .navbar {
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity: 0.9;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+    color: #fff !important;
+  }
+  .navbar-nav li.active a {
+    color: #fff !important;
+    background-color: #29292c !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+  }
+  .open .dropdown-toggle {
+    color: #fff;
+    background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+    color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+    background-color: red !important;
+  }
+  footer {
+    background-color: #2d2d30;
+    color: #f5f5f5;
+    padding: 32px;
+  }
+  footer a {
+    color: #f5f5f5;
+  }
+  footer a:hover {
+    color: #777;
+    text-decoration: none;
+  }
+  .form-control {
+    border-radius: 0;
+  }
+  textarea {
+    resize: none;
+  }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Hepatitis-B</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">HOME</a></li>
+
+           <li><a href="/prediction">Prediction</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+      <center><div class="container">
+    <h2>Hepatitis-B Check Form</h2><br /><br />
+<!--<p>Note:1.Enter '0' for absence and '1' for presence<br>2.Enter '0' for female and '1' for male</p>-->
+<form class="form-horizontal" action="/predict" method="POST">
+
+
+ <fieldset>
+  <legend>Patient Information</legend>
+    <div class="form-group">
+      <label for="name" style="margin-left:-150px;margin-right:20px">Name:</label>
+      <input type="text" style="margin-top:-35px;margin-left:50px;width:110px;" class="form-control" id="name" placeholder="Enter Patient Name" name="name">
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <label style="margin-left:-135px;margin-right:50px">Sex:</label>
+            <div style="margin-top:-30px">
+                <div>
+                    <input class="form-check-input"  type="radio" name="sex" id="Male" value="Male">
+                    <label class="form-check-label" >Male</label>
+                </div>
+                <div style="margin-left:3px">
+                    <input style="margin-left:10px" class="form-check-input" type="radio" name="sex" id="Female" value="Female">
+                    <label class="form-check-label" >Female</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age" style="margin-left:-165px;margin-right:20px">Age:</label>
+      <input type="text" style="margin-top:-35px;margin-left:50px;width:110px;" class="form-control" id="age" placeholder="Enter the Age" name="age">
+    </div>
+ </fieldset>
+    <br/>
+    <hr style="margin-bottom:0"><h4 style="margin-bottom:10px;">Enter Report Data of Patient</h4><hr style="margin-top:0">
+    <div class="form-group">
+         <div class="form-check">
+             <label style="margin-left:20px;margin-right:20px">Steroid:</label>
+            <input class="form-check-input"  style="margin-left:20px" type="radio" name="steroid" value="High">
+            <label class="form-check-label" >High</label>
+            <input class="form-check-input" style="margin-left:20px" type="radio" name="steroid" value="Low">
+            <label class="form-check-label" >Low</label>
+        </div>
+    </div>
+      <div class="form-group">
+      <label style="margin-left:5px;margin-right:40px">Fatigue:</label>
+      <input class="form-check-input" type="radio" name="fatigue" id="Yes" value="Yes">
+      <label class="form-check-label">Yes</label>
+      <input class="form-check-input" style="margin-left:20px" type="radio" name="fatigue" id="No" value="No">
+      <label class="form-check-label" >No</label>
+    </div>
+
+      <div class="form-group">
+      <label style="margin-left:15px;margin-right:25px">Antivirals:</label>
+      <input class="form-check-input" type="radio" name="antivirals"  value="High">
+      <label class="form-check-label" >High</label>
+      <input class="form-check-input" style="margin-left:20px" type="radio" name="antivirals"  value="Low">
+      <label class="form-check-label" >Low</label>
+    </div>
+      <div class="form-group">
+          <label for="alk_phosphate" style="margin-left:-100px;">Alk_phosphate:</label>
+    </div>
+    <input type="text" style="margin-left:130px;width:120px;margin-top:-50px;margin-bottom:20px" class="form-control" id="alk_phosphate" placeholder="Enter the data" name="alk_phosphate">
+      <div class="form-group">
+      <label style="margin-left:5px;">Malaise:</label>
+            <input class="form-check-input" style="margin-left:40px" type="radio" name="malaise"  value="High">
+            <label class="form-check-label">High</label>
+            <input class="form-check-input" style="margin-left:10px" type="radio" name="malaise" value="Low">
+            <label class="form-check-label" >Low</label>
+    </div>
+      <div class="form-group">
+      <label style="margin-left:5px;">Liver_big:</label>
+            <input class="form-check-input" style="margin-left:30px" type="radio" name="liver_big"  value="High">
+            <label class="form-check-label" >High</label>
+            <input class="form-check-input" type="radio" style="margin-left:10px" name="liver_big"  value="Low">
+            <label class="form-check-label" >Low</label>
+    </div>
+       <div class="form-group">
+      <label style="margin-left:3px;">Anorexia:</label>
+            <input class="form-check-input"  style="margin-left:32px" type="radio" name="anorexia" value="High">
+            <label class="form-check-label" >High</label>
+            <input class="form-check-input" type="radio" style="margin-left:10px" name="anorexia"  value="Low">
+            <label class="form-check-label" >Low</label>
+       </div>
+       <div class="form-group">
+      <label  style="margin-left:0px;">Spiders:</label>
+            <input class="form-check-input" style="margin-left:45px" type="radio" name="spiders"  value="High">
+            <label class="form-check-label" >High</label>
+            <input class="form-check-input" type="radio" name="spiders" style="margin-left:10px"  value="Low">
+            <label class="form-check-label" >Low</label>
+    </div>
+       <div class="form-group">
+      <label  style="margin-left:0px;">Ascities:</label>
+            <input class="form-check-input" style="margin-left:43px" type="radio" name="ascites"  value="High">
+            <label class="form-check-label" >High</label>
+            <input class="form-check-input" type="radio" name="ascites" style="margin-left:10px" value="Low">
+            <label class="form-check-label" >Low</label>
+    </div>
+
+       <div class="form-group">
+      <label for="bilirubin" style="margin-left:-145px;">Bilirubin:</label>
+      <input type="text" style="margin-top:-35px;margin-left:120px;width:120px;" class="form-control" id="bilirubin" placeholder="Enter the data" name="bilirubin">
+    </div>
+      <div class="form-group">
+      <label  style="margin-left:-2px;">Histology:</label>
+            <input class="form-check-input" style="margin-left:35px" type="radio" name="histology" id="High" value="High">
+            <label class="form-check-label" >High</label>
+            <input class="form-check-input" type="radio" name="histology" id="Low" value="Low" style="margin-left:10px">
+            <label class="form-check-label" >Low</label>
+    </div>
+      <div class="form-group">
+      <label for="sgot" style="margin-left:-175px;">Sgot:</label>
+      <input type="text" style="margin-top:-35px;margin-left:120px;width:120px;" class="form-control" id="sgot" placeholder="Enter the data" name="sgot">
+    </div>
+      <div class="form-group">
+      <label for="albumin" style="margin-left:-155px;">Albumin:</label>
+      <input type="text" style="margin-top:-35px;margin-left:120px;width:120px;" class="form-control" id="albumin" placeholder="Enter the data" name="albumin">
+    </div>
+
+
+    <button type="submit" class="btn btn-default">Submit</button>
+
+</form>
+
+</div>
+
+
+ {% if msg=="done" %}
+    <div class="alert alert-success">
+  <strong>Success!</strong> Output predicted!!
+</div>
+ {% endif %}
+        {% if op[0] == 0 %}
+            <div class="alert alert-info">
+            <p>The output is: {{ op }}<br>person is infected!!!<br>Kindly consult the Doctor!</p>
+            </div>
+        {% endif %}
+
+      {% if op[0]== 1 %}
+<div class="alert alert-info">
+  <p>The output is :{{ op }}<br>Person is Disinfected!</p>
+</div>
+{% endif %}
+
+
+      </center>
+</body>
+</html>
